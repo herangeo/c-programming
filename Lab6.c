@@ -8,6 +8,7 @@ struct WorkoutData {
 };
 
 // Function prototypes
+
 void quickSort(struct WorkoutData arr[], int low, int high, int* quickComparisons);
 void bubbleSort(struct WorkoutData arr[], int size, int* bubbleComparisons);
 int partition(struct WorkoutData arr[], int low, int high, int* quickComparisons);
@@ -18,6 +19,7 @@ void readDataFromFile(struct WorkoutData arr[], int size, const char* filename);
 void printArray(struct WorkoutData arr[], int size);
 
 int main() {
+    const char* filename = "Sample.txt";
     const int size = 5;
     struct WorkoutData workoutDataQuick[size];
     struct WorkoutData workoutDataBubble[size];
@@ -58,8 +60,15 @@ int main() {
         printf("\nThe number of comparisons made by Quick Sort and Bubble Sort is equal.\n");
     }
 
+    // Write data to the file
+    writeDataToFile(workoutDataQuick, size, filename);
+
+    // Read data from the file
+    readDataFromFile(workoutDataQuick, size, filename);
+
     return 0;
 }
+
 
 // Quick Sort implementation
 void quickSort(struct WorkoutData arr[], int low, int high, int* quickComparisons) {
@@ -118,6 +127,7 @@ void generateRandomData(struct WorkoutData arr[], int size) {
 }
 
 // Write data to a file using structures
+
 void writeDataToFile(struct WorkoutData arr[], int size, const char* filename) {
     FILE* file = fopen(filename, "w");
     if (file != NULL) {
@@ -130,7 +140,6 @@ void writeDataToFile(struct WorkoutData arr[], int size, const char* filename) {
     }
 }
 
-// Read data from a file using structures
 void readDataFromFile(struct WorkoutData arr[], int size, const char* filename) {
     FILE* file = fopen(filename, "r");
     if (file != NULL) {
@@ -142,6 +151,7 @@ void readDataFromFile(struct WorkoutData arr[], int size, const char* filename) 
         printf("Error opening file for reading.\n");
     }
 }
+
 
 // Print array elements
 void printArray(struct WorkoutData arr[], int size) {
